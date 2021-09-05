@@ -1,0 +1,46 @@
+- Action:
+    Operation: JOIN
+    Parameters:
+      joinKeys: '[{"key":"PULocationID","value":"LocationID"}]'
+      joinType: LEFT_JOIN
+      leftColumns: >-
+        ["VendorID","tpep_pickup_datetime","tpep_dropoff_datetime","passenger_count","trip_distance","PULocationID","DOLocationID","total_amount"]
+      rightColumns: '["Zone"]'
+      secondInputLocation: s3://aws-glue-input-apne2-xyz/taxi-lookup/taxi_zone_lookup.csv
+      secondaryDatasetName: ny-taxi-lookup
+- Action:
+    Operation: RENAME
+    Parameters:
+      sourceColumn: Zone
+      targetColumn: pickup_zone
+- Action:
+    Operation: JOIN
+    Parameters:
+      joinKeys: '[{"key":"DOLocationID","value":"LocationID"}]'
+      joinType: LEFT_JOIN
+      leftColumns: >-
+        ["VendorID","tpep_pickup_datetime","tpep_dropoff_datetime","passenger_count","trip_distance","PULocationID","DOLocationID","total_amount"]
+      rightColumns: '["Zone"]'
+      secondInputLocation: s3://aws-glue-input-apne2-xyz/taxi-lookup/taxi_zone_lookup.csv
+      secondaryDatasetName: ny-taxi-lookup
+- Action:
+    Operation: RENAME
+    Parameters:
+      sourceColumn: Zone
+      targetColumn: dropoff_zone
+- Action:
+    Operation: RENAME
+    Parameters:
+      sourceColumn: tpep_pickup_datetime
+      targetColumn: pickup_datetime
+- Action:
+    Operation: RENAME
+    Parameters:
+      sourceColumn: tpep_dropoff_datetime
+      targetColumn: dropoff_datetime
+- Action:
+    Operation: TODAY
+    Parameters:
+      functionStepType: TODAY
+      targetColumn: partition_column
+      timeZone: America/New_York
