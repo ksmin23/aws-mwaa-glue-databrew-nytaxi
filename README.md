@@ -63,7 +63,7 @@ airflow-bucket-name
    + AwsGlueDataBrewFullAccessPolicy
    + AWSGlueDataBrewServiceRole
    + **inline policy** such as:
-        ```
+        <pre>
         {
             "Version": "2012-10-17",
             "Statement": [
@@ -81,13 +81,13 @@ airflow-bucket-name
                         "s3:PutBucketPublicAccessBlock"
                     ],
                     "Resource": [
-                        "arn:aws:s3:::<your-output-bucket-name>",
-                        "arn:aws:s3:::<your-output-bucket-name>/*"
+                        "arn:aws:s3:::<i>your-output-bucket-name</i>",
+                        "arn:aws:s3:::<i>your-output-bucket-name</i>/*"
                     ]
                 }
             ]
         }
-        ```
+        </pre>
 
 ### (Step 5) Create an Airflow DAG
  Upload `requirements.txt` and `ny_taxi_brew_trigger.py` in `./mwaa` directory in to s3.
