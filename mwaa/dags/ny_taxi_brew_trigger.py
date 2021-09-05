@@ -148,3 +148,4 @@ yellow_taxi >> update_yellow_partition >> stage_table >> s3_prefix_exists >> for
 green_taxi >> update_green_partition >> stage_table >> s3_prefix_exists >> fork
 fork >> true_task >> delete_task >> insert_aggregate_table >> drop_stage_table
 fork >> false_task >> insert_aggregate_table >> drop_stage_table
+
