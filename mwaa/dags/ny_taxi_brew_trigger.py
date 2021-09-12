@@ -42,16 +42,16 @@ def branch(**kwargs):
 
 # Custom operator to trigger Databrew job. This function utilizes boto3 client
 def run_customer_job(**kwargs):
-    job_name=kwargs['job_name']
+    job_name = kwargs['job_name']
     print("Starting Brew Job")
 
     # Trigger the Databrew job and monitor it’s state.
-    run_id=glue_databrew_client.start_job_run(Name=job_name)
+    run_id = glue_databrew_client.start_job_run(Name=job_name)
     state = glue_databrew_client.describe_job_run(Name=job_name,RunId=run_id['RunId'])
 
     # Keep polling every 30 seconds to see if there is a status change in Job run.
     if state:
-        status=state['State']
+        status = state['State']
         while status not in ['SUCCEEDED']:
             print("Sleeping")
             time.sleep(30)
@@ -111,7 +111,6 @@ fork = BranchPythonOperator(
     python_callable=branch,
     provide_context=True,
     dag=dag)
-
 
 yellow_taxi = PythonOperator(task_id='yellow_taxi', python_callable=run_customer_job,
   op_kwargs={'job_name': 'yellow-taxi-job'}, dag=dag)
