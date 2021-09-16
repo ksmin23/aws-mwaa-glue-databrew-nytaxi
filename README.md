@@ -105,4 +105,4 @@ airflow-bucket-name
  * [Orchestrate AWS Glue DataBrew jobs using Amazon Managed Workflows for Apache Airflow](https://aws.amazon.com/blogs/big-data/orchestrate-aws-glue-databrew-jobs-using-amazon-managed-workflows-for-apache-airflow/)
  * [Amazon MWAA for Analytics Workshop](https://amazon-mwaa-for-analytics.workshop.aws/en/)
  * [Get started with Amazon Managed Workflows for Apache Airflow \(MWAA\)](https://docs.aws.amazon.com/mwaa/latest/userguide/get-started.html)
- * [Amazon Managed workflows for Apache Airflow (MWAA) CDK Python project](https://github.com/ksmin23/my-aws-cdk-examples/tree/main/mwaa)
+ * [Amazon Managed Workflows for Apache Airflow (MWAA) CDK Python project](https://github.com/ksmin23/my-aws-cdk-examples/tree/main/mwaa)
